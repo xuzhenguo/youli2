@@ -13,6 +13,7 @@
 @property(nonatomic,copy)NSString *page;
 @property(nonatomic,copy)NSString *size;
 @property(nonatomic,copy)NSString *update_time;
+@property(nonatomic,assign)NSNumber *downloadSize;
 -(instancetype)initWith:(NSDictionary *)dic;
 +(downModel *)appWithDic:(NSDictionary *)dic;
 @end

@@ -10,6 +10,8 @@
 		934FFEC01BAFC21A00A2268B /* TitleImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEBF1BAFC21A00A2268B /* TitleImageTableViewCell.m */; };
 		934FFEC31BAFD7FF00A2268B /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEC21BAFD7FF00A2268B /* DownCell.m */; };
 		934FFEC61BAFFB6800A2268B /* downModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEC51BAFFB6800A2268B /* downModel.m */; };
+		934FFEFF1BB049E800A2268B /* DownData.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEFC1BB049E800A2268B /* DownData.m */; };
+		934FFF001BB049E800A2268B /* NSString+Hashing.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEFE1BB049E800A2268B /* NSString+Hashing.m */; };
 		9366A7FE1BACF1CF00640B8F /* CorePullScaleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9366A7FB1BACF1CF00640B8F /* CorePullScaleImageView.m */; };
 		9366A7FF1BACF1CF00640B8F /* UIScrollView+PullScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 9366A7FD1BACF1CF00640B8F /* UIScrollView+PullScale.m */; };
 		938C97391BAF204B00C0AFFB /* UILabel+Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 938C97381BAF204B00C0AFFB /* UILabel+Help.m */; };
@@ -222,6 +224,10 @@
 		934FFEC21BAFD7FF00A2268B /* DownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownCell.m; sourceTree = "<group>"; };
 		934FFEC41BAFFB6800A2268B /* downModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = downModel.h; sourceTree = "<group>"; };
 		934FFEC51BAFFB6800A2268B /* downModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = downModel.m; sourceTree = "<group>"; };
+		934FFEFB1BB049E800A2268B /* DownData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownData.h; sourceTree = "<group>"; };
+		934FFEFC1BB049E800A2268B /* DownData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownData.m; sourceTree = "<group>"; };
+		934FFEFD1BB049E800A2268B /* NSString+Hashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hashing.h"; sourceTree = "<group>"; };
+		934FFEFE1BB049E800A2268B /* NSString+Hashing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hashing.m"; sourceTree = "<group>"; };
 		9366A7FA1BACF1CF00640B8F /* CorePullScaleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePullScaleImageView.h; sourceTree = "<group>"; };
 		9366A7FB1BACF1CF00640B8F /* CorePullScaleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePullScaleImageView.m; sourceTree = "<group>"; };
 		9366A7FC1BACF1CF00640B8F /* UIScrollView+PullScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+PullScale.h"; sourceTree = "<group>"; };
@@ -743,6 +749,10 @@
 				93C101A31BAA9F83004FDBAC /* help.h */,
 				938C97371BAF204B00C0AFFB /* UILabel+Help.h */,
 				938C97381BAF204B00C0AFFB /* UILabel+Help.m */,
+				934FFEFB1BB049E800A2268B /* DownData.h */,
+				934FFEFC1BB049E800A2268B /* DownData.m */,
+				934FFEFD1BB049E800A2268B /* NSString+Hashing.h */,
+				934FFEFE1BB049E800A2268B /* NSString+Hashing.m */,
 			);
 			name = other;
 			path = "游历/other";
@@ -1355,6 +1365,7 @@
 				93C101DA1BAABE61004FDBAC /* UIImageView+HighlightedWebCache.m in Sources */,
 				93C101D71BAABE61004FDBAC /* UIImage+GIF.m in Sources */,
 				93C101F21BAAC4BD004FDBAC /* NSData+SDDataCache.m in Sources */,
+				934FFEFF1BB049E800A2268B /* DownData.m in Sources */,
 				93C101891BAA9B3D004FDBAC /* AFHTTPRequestOperation.m in Sources */,
 				93C101F81BAAC4BD004FDBAC /* SDCycleScrollView.m in Sources */,
 				93C101CF1BAABE61004FDBAC /* SDImageCache.m in Sources */,
@@ -1363,6 +1374,7 @@
 				934FFEC01BAFC21A00A2268B /* TitleImageTableViewCell.m in Sources */,
 				9366A7FE1BACF1CF00640B8F /* CorePullScaleImageView.m in Sources */,
 				93C101D31BAABE61004FDBAC /* SDWebImageDownloaderOperation.m in Sources */,
+				934FFF001BB049E800A2268B /* NSString+Hashing.m in Sources */,
 				93C1FF781BAA68D0004FDBAC /* RDVTabBar.m in Sources */,
 				93C1021D1BAAFEB3004FDBAC /* MASCompositeConstraint.m in Sources */,
 				93C101921BAA9B3D004FDBAC /* AFNetworkActivityIndicatorManager.m in Sources */,

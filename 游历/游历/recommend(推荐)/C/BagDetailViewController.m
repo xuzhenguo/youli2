@@ -16,6 +16,9 @@
 #import "TitleImageTableViewCell.h"
 #import "DownCell.h"
 #import "downModel.h"
+#import "DownLoadData.h"
+#import "DownData.h"
+
 @implementation BagDetailViewController
 {
     NSMutableArray *otherData;
@@ -41,12 +44,12 @@
 }
 -(void)getData:(NSString *)myId
 {
-   
+    
 #pragma mark --数据持久
     //    本地提取数据
     //        存储数据
-     if (_guide_id == myId) {
-//    if (self.name != nil) {
+    if (_guide_id == myId) {
+        //    if (self.name != nil) {
         
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         
@@ -55,26 +58,26 @@
             NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
             NSDictionary *jsonData = [jsonDic objectForKey:@"data"];
-        
+            
             dataMode = [BagModel appWithDic:jsonData];
             [self.table reloadData];
         }
-
+        
     }
-//     }
+    //     }
     
     dataArr = [[NSMutableArray alloc]init];
     [DownLoadData getcivilDetailData:^(id obj,id obj1, NSError *err) {
         if(obj) {
             
             if (_guide_id == myId) {
-                 dataMode = obj;
+                dataMode = obj;
                 dwnModel = obj1;
             }else{
                 
                 //            其他页数据
                 [dataArr addObject:obj];
-
+                
             }
             [self.table reloadData];
         }else{
@@ -89,7 +92,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-         NSString *ID = @"ID";
+        NSString *ID = @"ID";
         TitleImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell == nil) {
             cell = [[TitleImageTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
@@ -101,17 +104,17 @@
         return cell;
     }else{
         
-         if (_integer == 0) {
-             NSString *ID2 = @"ID2";
-             AuthorCell *cell = [tableView dequeueReusableCellWithIdentifier:ID2];
-             
-             if (cell == nil) {
-                 cell = [[AuthorCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID2];
-             }
-
+        if (_integer == 0) {
+            NSString *ID2 = @"ID2";
+            AuthorCell *cell = [tableView dequeueReusableCellWithIdentifier:ID2];
+            
+            if (cell == nil) {
+                cell = [[AuthorCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID2];
+            }
+            
             if (indexPath.row == 0) {
 #pragma mark -- 作者1
-            NSString *path =[NSString stringWithFormat:@"%@/260_390.jpg?%@",dataMode.cover,dataMode.cover_updatetime];
+                NSString *path =[NSString stringWithFormat:@"%@/260_390.jpg?%@",dataMode.cover,dataMode.cover_updatetime];
                 NSURL *url = [NSURL URLWithString:path];
                 [cell.imageView2 sd_setImageWithURL:url];
                 cell.nameLable1.text = @"锦囊作者";
@@ -125,36 +128,36 @@
                 frame.size.height = cell.contentLabel.frame.size.height +90;
                 cell.frame = frame;
                 
-
+                
                 return cell;
             }
-             if (indexPath.row == 1) {
-   
+            if (indexPath.row == 1) {
+                
 #pragma mark -- 作者2
-                 NSString *path = dataMode.author_icon;
-                 NSURL *url = [NSURL URLWithString:path];
-                  [cell.imageView2 sd_setImageWithURL:url];
-                 cell.nameLable1.text = dataMode.author_name;
-                 
-                     NSString *conten = [NSString stringWithFormat:@"        %@",dataMode.author_intro];
-                 cell.contentLabel.text = conten;
-                 
-                 
-                 [cell.contentLabel AdjustCellHight];
-                 CGRect frame = cell.frame;
-                 frame.size.height = cell.contentLabel.frame.size.height +90;
-                 cell.frame = frame;
-                 
-                 
-                 return cell;
-                 
-             }
-
+                NSString *path = dataMode.author_icon;
+                NSURL *url = [NSURL URLWithString:path];
+                [cell.imageView2 sd_setImageWithURL:url];
+                cell.nameLable1.text = dataMode.author_name;
+                
+                NSString *conten = [NSString stringWithFormat:@"        %@",dataMode.author_intro];
+                cell.contentLabel.text = conten;
+                
+                
+                [cell.contentLabel AdjustCellHight];
+                CGRect frame = cell.frame;
+                frame.size.height = cell.contentLabel.frame.size.height +90;
+                cell.frame = frame;
+                
+                
+                return cell;
+                
+            }
+            
         }
         
         
         if (_integer == 1) {
-
+            
             static NSString *ID10 = @"ID10";
             BagCell *cell = [tableView dequeueReusableCellWithIdentifier:ID10];
             if (cell == nil) {
@@ -174,13 +177,35 @@
             if (cell == nil) {
                 cell = [[DownCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID11];
             }
-//            按钮点击事件
+            //            按钮点击事件
             [cell setBlock:^{
                 
-//                下载
-//                NSString *path = dataMode.fileUrl;
+                //                下载
+                //                NSString *path = dataMode.fileUrl;
                 
+                //                [NSURLConnection connectionWithRequest:request delegate:self];
                 
+                DownData *fd = [[DownData alloc]init];
+                fd.model  = dwnModel;
+                [fd requestFromUrlreceiveDataBlock:^(DownData *fd) {
+                    CGFloat progress = [fd.model.downloadSize longLongValue]/1.0f/[fd.model.size longLongValue];
+                    cell.planLbel.text = [NSString stringWithFormat:@"%.2f%@",progress*100,@"%"];
+                    cell.progressView.progress = progress;
+                } finished:^(DownData *fd) {
+                    
+                    NSLog(@"文件下载完成，地址：%@",fd.localPath);
+                    
+                    //解压zip
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                } failed:^(DownData *fd) {
+                    
+                }];
                 
                 
                 
@@ -226,12 +251,12 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section ==1) {
-            UIView *view = [[UIView alloc]init];
+        UIView *view = [[UIView alloc]init];
         
-            [view addSubview:segment];
+        [view addSubview:segment];
         return view;
     }
-
+    
     return nil;
 }
 #pragma mark -- 行数
@@ -258,7 +283,7 @@
     
     if (sengent.selectedSegmentIndex == 1) {
         otherId = [dataMode.other_guide_ids componentsSeparatedByString:@","];
-      
+        
         NSMutableArray *arr = [[NSMutableArray alloc]init];
         [otherId enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
@@ -288,7 +313,7 @@
         }];
         
     }
-       [self.table reloadData];
+    [self.table reloadData];
     
     
 }
@@ -310,7 +335,7 @@
     if (_integer == 1) {
         BagDetailViewController *bagDetail = [[BagDetailViewController alloc]init];
         bagDetail.guide_id = otherId[indexPath.row];
-//        bagDetail.name = bagModel.guide_cnname;
+        //        bagDetail.name = bagModel.guide_cnname;
         [self.navigationController pushViewController:bagDetail animated:YES];
     }
     
