@@ -32,9 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+      self.table = [[UITableView alloc]initWithFrame:CGRectMake(0, 64,SCREEN_WIDHT, SCREEN_HEIGHT - 64 - 49) style:UITableViewStylePlain];
     NSLog(@"%@",NSHomeDirectory());
     self.navigationItem.title = @"推荐";
 //        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"home_head"] forBarMetrics:UIBarMetricsDefault];
+    
     
     [self gataData];
     

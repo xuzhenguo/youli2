@@ -8,6 +8,6 @@
 
 #import "MainViewController.h"
 
-@interface CollectViewController : MainViewController
+@interface CollectViewController : UIViewController
 
 @end

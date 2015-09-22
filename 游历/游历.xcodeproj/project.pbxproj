@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934A73911BB14C9000238B9A /* lableColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A73901BB14C9000238B9A /* lableColor.m */; };
+		934A73941BB14D2E00238B9A /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A73931BB14D2E00238B9A /* MainTableViewController.m */; };
+		934A739C1BB18AEC00238B9A /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A739B1BB18AEC00238B9A /* CollectionViewCell.m */; };
+		934A739F1BB19A7D00238B9A /* RecipeCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A739E1BB19A7D00238B9A /* RecipeCollectionHeaderView.m */; };
 		934FFEC01BAFC21A00A2268B /* TitleImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEBF1BAFC21A00A2268B /* TitleImageTableViewCell.m */; };
 		934FFEC31BAFD7FF00A2268B /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEC21BAFD7FF00A2268B /* DownCell.m */; };
 		934FFEC61BAFFB6800A2268B /* downModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEC51BAFFB6800A2268B /* downModel.m */; };
@@ -218,6 +222,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		934A738F1BB14C9000238B9A /* lableColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lableColor.h; sourceTree = "<group>"; };
+		934A73901BB14C9000238B9A /* lableColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lableColor.m; sourceTree = "<group>"; };
+		934A73921BB14D2E00238B9A /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		934A73931BB14D2E00238B9A /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		934A739A1BB18AEC00238B9A /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		934A739B1BB18AEC00238B9A /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		934A739D1BB19A7D00238B9A /* RecipeCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCollectionHeaderView.h; sourceTree = "<group>"; };
+		934A739E1BB19A7D00238B9A /* RecipeCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCollectionHeaderView.m; sourceTree = "<group>"; };
 		934FFEBE1BAFC21A00A2268B /* TitleImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleImageTableViewCell.h; sourceTree = "<group>"; };
 		934FFEBF1BAFC21A00A2268B /* TitleImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleImageTableViewCell.m; sourceTree = "<group>"; };
 		934FFEC11BAFD7FF00A2268B /* DownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownCell.h; sourceTree = "<group>"; };
@@ -533,6 +545,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		934A738E1BB14C7C00238B9A /* Rolling */ = {
+			isa = PBXGroup;
+			children = (
+				934A738F1BB14C9000238B9A /* lableColor.h */,
+				934A73901BB14C9000238B9A /* lableColor.m */,
+			);
+			path = Rolling;
+			sourceTree = "<group>";
+		};
+		934A73981BB18ABE00238B9A /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		934A73991BB18ABE00238B9A /* V */ = {
+			isa = PBXGroup;
+			children = (
+				934A739A1BB18AEC00238B9A /* CollectionViewCell.h */,
+				934A739B1BB18AEC00238B9A /* CollectionViewCell.m */,
+				934A739D1BB19A7D00238B9A /* RecipeCollectionHeaderView.h */,
+				934A739E1BB19A7D00238B9A /* RecipeCollectionHeaderView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		9366A7F91BACF1CF00640B8F /* CorePullScale */ = {
 			isa = PBXGroup;
 			children = (
@@ -930,9 +969,13 @@
 		93C1FF631BAA6882004FDBAC /* collect(锦囊) */ = {
 			isa = PBXGroup;
 			children = (
+				934A73921BB14D2E00238B9A /* MainTableViewController.h */,
+				934A73931BB14D2E00238B9A /* MainTableViewController.m */,
 				93C1FF961BAA6BBA004FDBAC /* CollectViewController.h */,
 				93C1FF971BAA6BBA004FDBAC /* CollectViewController.m */,
 				93C1FF981BAA6BBA004FDBAC /* CollectViewController.xib */,
+				934A73981BB18ABE00238B9A /* M */,
+				934A73991BB18ABE00238B9A /* V */,
 			);
 			name = "collect(锦囊)";
 			path = "游历/collect(锦囊)";
@@ -966,6 +1009,7 @@
 		93C1FF681BAA6882004FDBAC /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				934A738E1BB14C7C00238B9A /* Rolling */,
 				9366A7F91BACF1CF00640B8F /* CorePullScale */,
 				93C102031BAAFEB3004FDBAC /* Masonry */,
 				93C101E01BAAC4BD004FDBAC /* SDCycleScrollView */,
@@ -1354,6 +1398,7 @@
 				93C1FF791BAA68D0004FDBAC /* RDVTabBarController.m in Sources */,
 				93C101D11BAABE61004FDBAC /* SDWebImageDecoder.m in Sources */,
 				93C1018F1BAA9B3D004FDBAC /* AFURLRequestSerialization.m in Sources */,
+				934A73911BB14C9000238B9A /* lableColor.m in Sources */,
 				93C101D41BAABE61004FDBAC /* SDWebImageManager.m in Sources */,
 				93C1FF461BAA63EC004FDBAC /* AppDelegate.m in Sources */,
 				93C101F51BAAC4BD004FDBAC /* TADotView.m in Sources */,
@@ -1364,6 +1409,7 @@
 				93C102211BAAFEB3004FDBAC /* MASViewAttribute.m in Sources */,
 				93C101DA1BAABE61004FDBAC /* UIImageView+HighlightedWebCache.m in Sources */,
 				93C101D71BAABE61004FDBAC /* UIImage+GIF.m in Sources */,
+				934A73941BB14D2E00238B9A /* MainTableViewController.m in Sources */,
 				93C101F21BAAC4BD004FDBAC /* NSData+SDDataCache.m in Sources */,
 				934FFEFF1BB049E800A2268B /* DownData.m in Sources */,
 				93C101891BAA9B3D004FDBAC /* AFHTTPRequestOperation.m in Sources */,
@@ -1410,10 +1456,12 @@
 				934FFEC61BAFFB6800A2268B /* downModel.m in Sources */,
 				93AACCB11BAC1959009D399B /* BagViewController.m in Sources */,
 				93C101A01BAA9B70004FDBAC /* DownLoadData.m in Sources */,
+				934A739F1BB19A7D00238B9A /* RecipeCollectionHeaderView.m in Sources */,
 				93C1FF991BAA6BBA004FDBAC /* CollectViewController.m in Sources */,
 				93C101901BAA9B3D004FDBAC /* AFURLResponseSerialization.m in Sources */,
 				93C101DB1BAABE61004FDBAC /* UIImageView+WebCache.m in Sources */,
 				93C101951BAA9B3D004FDBAC /* UIButton+AFNetworking.m in Sources */,
+				934A739C1BB18AEC00238B9A /* CollectionViewCell.m in Sources */,
 				93C1FF7A1BAA68D0004FDBAC /* RDVTabBarItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
