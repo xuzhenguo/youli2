@@ -14,6 +14,7 @@
 #import  "tripModel.h"
 #import  "BagModel.h"
 #import "downModel.h"
+#import "collectModel.h"
 @implementation DownLoadData
 
 
@@ -69,10 +70,11 @@
 
 }
 
-+ (NSURLSessionDataTask *)getcivilPageData:(void (^) (id obj, NSError *err))block withPage:(int)page
++ (NSURLSessionDataTask *)getcivilPageData:(void (^) (id obj, NSError *err))block withPage:(NSString *)page
 {
     
-     NSDictionary *parameters = @{@"client_id":@"qyer_android",@"client_secret":@"9fcaae8aefc4f9ac4915",@"v":@"1",@"track_deviceid":@"864312020164434",@"track_app_version":@"5.2.1",@"track_app_channel":@"360m",@"track_device_info":@"HM2013022",@"track_os":@"Android4.2.1",@"track_user_id":@"",@"app_installtime":@"1411107832476",@"type":@"country",@"objectid":@"11",};
+     NSDictionary *parameters = @{@"client_id":@"qyer_android",@"client_secret":@"9fcaae8aefc4f9ac4915",@"v":@"1",@"track_deviceid":@"864312020164434",@"track_app_version":@"5.2.1",@"track_app_channel":@"360m",@"track_device_info":@"HM2013022",@"track_os":@"Android4.2.1",@"track_user_id":@"",@"app_installtime":@"1411107832476",@"type":@"country",@"objectid":page,};
+    
     
     
     return [[AFAppDotNetAPIClient sharedClient] POST:@"http://open.qyer.com/guide/guide/get_guide_list" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -149,6 +151,51 @@
     }];
 
     return nil;
+}
+
+//获取国国家锦囊列表
++ (NSURLSessionDataTask *)getCountriesDetailData:(void (^) (id obj,id obj1, NSError *err))block withId:(NSString *)myId
+{
+    
+   NSString *path = @"http://open.qyer.com/place/common/get_all_country?client_id=qyer_android&client_secret=9fcaae8aefc4f9ac4915&v=1";
+    
+  return   [[AFAppDotNetAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+      NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+      
+      NSArray *jsonData2 = [jsonData objectForKey:@"data"];
+      
+
+      NSMutableArray *dataBigArr = [[NSMutableArray alloc]init];
+      
+      [jsonData2 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+          
+        NSMutableArray *dataSmallArr = [[NSMutableArray alloc]init];
+          NSArray *jsonArr = [obj objectForKey:@"hotcountrylist"];
+          
+          [jsonArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+              
+              collectModel *model = [collectModel appWithDic:obj];
+              [dataSmallArr addObject:model];
+          }];
+         
+          [dataBigArr addObject:dataSmallArr];
+      }];
+      
+      if (block) {
+          block(dataBigArr,nil,nil);
+      }
+      
+      
+      
+  } failure:^(NSURLSessionDataTask *task, NSError *error) {
+      if (block) {
+          block(nil,nil,error);
+      }
+      
+  }];
+    
+    
 }
 @end
 

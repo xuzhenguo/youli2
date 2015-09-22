@@ -11,19 +11,19 @@
 @implementation RecipeCollectionHeaderView
 -(void)drawRect:(CGRect)rect
 {
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor blueColor];
 }
 
 //每次创建都调用
--(void)layoutSubviews
-{
-    
-}
-
-//第一次使用会掉用一次
-+(void)initialize
-{
-    
-}
+//-(void)layoutSubviews
+//{
+//    
+//}
+//
+////第一次使用会掉用一次
+//+(void)initialize
+//{
+//    
+//}
 
 @end

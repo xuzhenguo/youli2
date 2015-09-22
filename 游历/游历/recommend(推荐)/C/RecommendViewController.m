@@ -134,6 +134,7 @@
                   
                   if (ln == 1) {
                       BagViewController *bigView = [[BagViewController alloc]init];
+                      bigView.myId = @"11";
                       bigView.hidesBottomBarWhenPushed = YES;
                       [self.navigationController pushViewController:bigView animated:YES];
                   }

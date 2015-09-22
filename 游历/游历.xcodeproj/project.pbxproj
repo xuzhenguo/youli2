@@ -11,6 +11,9 @@
 		934A73941BB14D2E00238B9A /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A73931BB14D2E00238B9A /* MainTableViewController.m */; };
 		934A739C1BB18AEC00238B9A /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A739B1BB18AEC00238B9A /* CollectionViewCell.m */; };
 		934A739F1BB19A7D00238B9A /* RecipeCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A739E1BB19A7D00238B9A /* RecipeCollectionHeaderView.m */; };
+		934A73A31BB1B2D200238B9A /* XLPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A73A21BB1B2D200238B9A /* XLPlainFlowLayout.m */; };
+		934A73A61BB1BFE600238B9A /* collectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 934A73A51BB1BFE600238B9A /* collectModel.m */; };
+		934A73A81BB1CA0D00238B9A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934A73A71BB1CA0D00238B9A /* CollectionViewCell.xib */; };
 		934FFEC01BAFC21A00A2268B /* TitleImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEBF1BAFC21A00A2268B /* TitleImageTableViewCell.m */; };
 		934FFEC31BAFD7FF00A2268B /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEC21BAFD7FF00A2268B /* DownCell.m */; };
 		934FFEC61BAFFB6800A2268B /* downModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEC51BAFFB6800A2268B /* downModel.m */; };
@@ -230,6 +233,11 @@
 		934A739B1BB18AEC00238B9A /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		934A739D1BB19A7D00238B9A /* RecipeCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCollectionHeaderView.h; sourceTree = "<group>"; };
 		934A739E1BB19A7D00238B9A /* RecipeCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCollectionHeaderView.m; sourceTree = "<group>"; };
+		934A73A11BB1B2D200238B9A /* XLPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPlainFlowLayout.h; sourceTree = "<group>"; };
+		934A73A21BB1B2D200238B9A /* XLPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPlainFlowLayout.m; sourceTree = "<group>"; };
+		934A73A41BB1BFE600238B9A /* collectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collectModel.h; sourceTree = "<group>"; };
+		934A73A51BB1BFE600238B9A /* collectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = collectModel.m; sourceTree = "<group>"; };
+		934A73A71BB1CA0D00238B9A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		934FFEBE1BAFC21A00A2268B /* TitleImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleImageTableViewCell.h; sourceTree = "<group>"; };
 		934FFEBF1BAFC21A00A2268B /* TitleImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleImageTableViewCell.m; sourceTree = "<group>"; };
 		934FFEC11BAFD7FF00A2268B /* DownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownCell.h; sourceTree = "<group>"; };
@@ -557,6 +565,8 @@
 		934A73981BB18ABE00238B9A /* M */ = {
 			isa = PBXGroup;
 			children = (
+				934A73A41BB1BFE600238B9A /* collectModel.h */,
+				934A73A51BB1BFE600238B9A /* collectModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -566,10 +576,20 @@
 			children = (
 				934A739A1BB18AEC00238B9A /* CollectionViewCell.h */,
 				934A739B1BB18AEC00238B9A /* CollectionViewCell.m */,
+				934A73A71BB1CA0D00238B9A /* CollectionViewCell.xib */,
 				934A739D1BB19A7D00238B9A /* RecipeCollectionHeaderView.h */,
 				934A739E1BB19A7D00238B9A /* RecipeCollectionHeaderView.m */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		934A73A01BB1B2D200238B9A /* XLPlainFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				934A73A11BB1B2D200238B9A /* XLPlainFlowLayout.h */,
+				934A73A21BB1B2D200238B9A /* XLPlainFlowLayout.m */,
+			);
+			path = XLPlainFlowLayout;
 			sourceTree = "<group>";
 		};
 		9366A7F91BACF1CF00640B8F /* CorePullScale */ = {
@@ -1009,6 +1029,7 @@
 		93C1FF681BAA6882004FDBAC /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				934A73A01BB1B2D200238B9A /* XLPlainFlowLayout */,
 				934A738E1BB14C7C00238B9A /* Rolling */,
 				9366A7F91BACF1CF00640B8F /* CorePullScale */,
 				93C102031BAAFEB3004FDBAC /* Masonry */,
@@ -1351,6 +1372,7 @@
 				93C101051BAA8971004FDBAC /* bg_user_track_def.jpg in Resources */,
 				93C101061BAA8971004FDBAC /* btn_search@2x.png in Resources */,
 				93C1011B1BAA8971004FDBAC /* default_co_back@2x.png in Resources */,
+				934A73A81BB1CA0D00238B9A /* CollectionViewCell.xib in Resources */,
 				93C101231BAA8971004FDBAC /* ic_guide_jn_pause.png in Resources */,
 				93C101441BAA8971004FDBAC /* Pack_gray.png in Resources */,
 				93C1010B1BAA8971004FDBAC /* cou_plan@2x.png in Resources */,
@@ -1426,6 +1448,7 @@
 				93C101921BAA9B3D004FDBAC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				93C101D61BAABE61004FDBAC /* UIButton+WebCache.m in Sources */,
 				93C1018D1BAA9B3D004FDBAC /* AFSecurityPolicy.m in Sources */,
+				934A73A31BB1B2D200238B9A /* XLPlainFlowLayout.m in Sources */,
 				93C101D21BAABE61004FDBAC /* SDWebImageDownloader.m in Sources */,
 				9366A7FF1BACF1CF00640B8F /* UIScrollView+PullScale.m in Sources */,
 				93AACCB71BAC3F9B009D399B /* BagDetailViewController.m in Sources */,
@@ -1463,6 +1486,7 @@
 				93C101951BAA9B3D004FDBAC /* UIButton+AFNetworking.m in Sources */,
 				934A739C1BB18AEC00238B9A /* CollectionViewCell.m in Sources */,
 				93C1FF7A1BAA68D0004FDBAC /* RDVTabBarItem.m in Sources */,
+				934A73A61BB1BFE600238B9A /* collectModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

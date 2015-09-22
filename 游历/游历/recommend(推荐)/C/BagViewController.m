@@ -56,7 +56,7 @@
                         [alertView show];
         }
 
-    } withPage:0];
+    } withPage:self.myId];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

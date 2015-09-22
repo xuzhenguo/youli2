@@ -11,5 +11,6 @@
 #import "BagCell.h"
 @interface BagViewController : MainViewController
 
+@property(nonatomic,copy)NSString *myId;
 
 @end

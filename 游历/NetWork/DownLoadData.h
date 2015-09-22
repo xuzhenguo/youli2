@@ -17,10 +17,14 @@
 
 
 //获取国内锦囊数据
-+ (NSURLSessionDataTask *)getcivilPageData:(void (^) (id obj, NSError *err))block withPage:(int)page;
++ (NSURLSessionDataTask *)getcivilPageData:(void (^) (id obj, NSError *err))block withPage:(NSString *)page;
 
 //获取国内锦囊数据详情页
 + (NSURLSessionDataTask *)getcivilDetailData:(void (^) (id obj,id obj1, NSError *err))block withId:(NSString *)myId;
+
+
+//获取国国家锦囊列表
++ (NSURLSessionDataTask *)getCountriesDetailData:(void (^) (id obj,id obj1, NSError *err))block withId:(NSString *)myId;
 @end
 
 
