@@ -79,8 +79,11 @@
     
     return [[AFAppDotNetAPIClient sharedClient] POST:@"http://open.qyer.com/guide/guide/get_guide_list" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        
+        
         NSUserDefaults *urser = [NSUserDefaults standardUserDefaults];
-        [urser setObject:responseObject forKey:@"bagData"];
+        
+        [urser setObject:responseObject forKey:page];
         [urser synchronize];
         
         
@@ -160,6 +163,11 @@
    NSString *path = @"http://open.qyer.com/place/common/get_all_country?client_id=qyer_android&client_secret=9fcaae8aefc4f9ac4915&v=1";
     
   return   [[AFAppDotNetAPIClient sharedClient] POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+      
+      NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+      [user setObject:responseObject forKey:@"myId"];
+      
+    
     
       NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
       

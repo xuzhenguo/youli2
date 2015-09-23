@@ -25,8 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+
+//    dataBigArr = [[NSMutableArray alloc]init];
     
     XLPlainFlowLayout *layout1 = [XLPlainFlowLayout new];
     layout1.itemSize = CGSizeMake(0, 0);
@@ -56,6 +56,55 @@
 
 -(void)downData
 {
+    
+    
+    
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSData *data = [user objectForKey:@"myId"];
+
+    if (data != nil) {
+        
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        NSArray *jsonData2 = [jsonData objectForKey:@"data"];
+        
+        
+        NSMutableArray *dataBig = [[NSMutableArray alloc]init];
+        
+        
+     
+        
+        
+        [jsonData2 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            NSMutableArray *dataSmallArr = [[NSMutableArray alloc]init];
+            NSArray *jsonArr = [obj objectForKey:@"hotcountrylist"];
+            
+            [jsonArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                
+                collectModel *model = [collectModel appWithDic:obj];
+                [dataSmallArr addObject:model];
+            }];
+            
+            [dataBig addObject:dataSmallArr];
+        }];
+        
+      dataArr = dataBig[_index];
+//        dataBigArr = dataBig;
+        
+        [collectionView1 reloadData];
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     [DownLoadData getCountriesDetailData:^(id obj, id obj1, NSError *err) {
         if (obj) {
             

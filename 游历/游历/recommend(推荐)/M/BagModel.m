@@ -12,7 +12,10 @@
 -(instancetype)initWithDic:(NSDictionary *)dic
 {
     if (self = [super init]) {
-        [self setValuesForKeysWithDictionary:dic];
+        if ([dic isKindOfClass:[NSDictionary class]]) {
+            [self setValuesForKeysWithDictionary:dic];
+        }
+        
     }
     return self;
 }

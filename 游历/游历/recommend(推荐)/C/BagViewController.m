@@ -27,17 +27,25 @@
 {
     
     NSUserDefaults *urser = [NSUserDefaults standardUserDefaults];
-    NSData * data =[urser objectForKey:@"bagData"];
+    NSData * data =[urser objectForKey:self.myId];
+
+    
 
     if (data != nil) {
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *jsonArr = [json objectForKey:@"data"];
         
+        
+        
         NSMutableArray *dataJsonArr = [[NSMutableArray alloc]init];
-        [jsonArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            BagModel *bigModel = [BagModel appWithDic:obj];
-            [dataJsonArr addObject:bigModel];
-        }];
+        
+        if ([jsonArr isKindOfClass:[NSArray class]]) {
+            [jsonArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                BagModel *bigModel = [BagModel appWithDic:obj];
+                [dataJsonArr addObject:bigModel];
+            }];
+        }
+
         dataArr = dataJsonArr;
         [self.table reloadData];
     }
@@ -48,6 +56,13 @@
         if(obj) {
             
             dataArr = obj;
+            
+            if (dataArr.count == 0) {
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"没有找到旅游景点,谢谢!!!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+            
+            
             [self.table reloadData];
             
         }else{
