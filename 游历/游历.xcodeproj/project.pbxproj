@@ -21,6 +21,9 @@
 		934FFF001BB049E800A2268B /* NSString+Hashing.m in Sources */ = {isa = PBXBuildFile; fileRef = 934FFEFE1BB049E800A2268B /* NSString+Hashing.m */; };
 		9366A7FE1BACF1CF00640B8F /* CorePullScaleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9366A7FB1BACF1CF00640B8F /* CorePullScaleImageView.m */; };
 		9366A7FF1BACF1CF00640B8F /* UIScrollView+PullScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 9366A7FD1BACF1CF00640B8F /* UIScrollView+PullScale.m */; };
+		93691D8B1BB2DDEA00A31228 /* LocalityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93691D8A1BB2DDEA00A31228 /* LocalityModel.m */; };
+		93691D8F1BB2E2E100A31228 /* LocalityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93691D8D1BB2E2E100A31228 /* LocalityTableViewCell.m */; };
+		93691D901BB2E2E100A31228 /* LocalityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93691D8E1BB2E2E100A31228 /* LocalityTableViewCell.xib */; };
 		938C97391BAF204B00C0AFFB /* UILabel+Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 938C97381BAF204B00C0AFFB /* UILabel+Help.m */; };
 		93AACCAE1BAC17F3009D399B /* BagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AACCAD1BAC17F3009D399B /* BagModel.m */; };
 		93AACCB11BAC1959009D399B /* BagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AACCB01BAC1959009D399B /* BagViewController.m */; };
@@ -252,6 +255,11 @@
 		9366A7FB1BACF1CF00640B8F /* CorePullScaleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePullScaleImageView.m; sourceTree = "<group>"; };
 		9366A7FC1BACF1CF00640B8F /* UIScrollView+PullScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+PullScale.h"; sourceTree = "<group>"; };
 		9366A7FD1BACF1CF00640B8F /* UIScrollView+PullScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PullScale.m"; sourceTree = "<group>"; };
+		93691D891BB2DDEA00A31228 /* LocalityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalityModel.h; path = ../V/LocalityModel.h; sourceTree = "<group>"; };
+		93691D8A1BB2DDEA00A31228 /* LocalityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalityModel.m; path = ../V/LocalityModel.m; sourceTree = "<group>"; };
+		93691D8C1BB2E2E100A31228 /* LocalityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalityTableViewCell.h; sourceTree = "<group>"; };
+		93691D8D1BB2E2E100A31228 /* LocalityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalityTableViewCell.m; sourceTree = "<group>"; };
+		93691D8E1BB2E2E100A31228 /* LocalityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalityTableViewCell.xib; sourceTree = "<group>"; };
 		938C97371BAF204B00C0AFFB /* UILabel+Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Help.h"; sourceTree = "<group>"; };
 		938C97381BAF204B00C0AFFB /* UILabel+Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Help.m"; sourceTree = "<group>"; };
 		93AACCAC1BAC17F3009D399B /* BagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagModel.h; sourceTree = "<group>"; };
@@ -1065,6 +1073,8 @@
 		93C1FF6B1BAA6882004FDBAC /* M */ = {
 			isa = PBXGroup;
 			children = (
+				93691D891BB2DDEA00A31228 /* LocalityModel.h */,
+				93691D8A1BB2DDEA00A31228 /* LocalityModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1072,6 +1082,9 @@
 		93C1FF6C1BAA6882004FDBAC /* V */ = {
 			isa = PBXGroup;
 			children = (
+				93691D8C1BB2E2E100A31228 /* LocalityTableViewCell.h */,
+				93691D8D1BB2E2E100A31228 /* LocalityTableViewCell.m */,
+				93691D8E1BB2E2E100A31228 /* LocalityTableViewCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1346,6 +1359,7 @@
 				93C1013A1BAA8971004FDBAC /* Icon@2x.png in Resources */,
 				93C101081BAA8971004FDBAC /* btn_webview_refresh.png in Resources */,
 				93C100FF1BAA8971004FDBAC /* bg_bbs_sendbt_pressed.9.png in Resources */,
+				93691D901BB2E2E100A31228 /* LocalityTableViewCell.xib in Resources */,
 				93C101301BAA8971004FDBAC /* Icon-72.png in Resources */,
 				93C1FF921BAA6B40004FDBAC /* LocalityViewController.xib in Resources */,
 				93C1014D1BAA8971004FDBAC /* Self@2x.png in Resources */,
@@ -1412,9 +1426,11 @@
 				93C102021BAAFD18004FDBAC /* fiveCell.m in Sources */,
 				93C101A61BAAA70C004FDBAC /* TitleModel.m in Sources */,
 				93C8729E1BADDB4200BE2973 /* AuthorCell.m in Sources */,
+				93691D8B1BB2DDEA00A31228 /* LocalityModel.m in Sources */,
 				93C1FF8C1BAA6B1D004FDBAC /* RecommendViewController.m in Sources */,
 				93AACCAE1BAC17F3009D399B /* BagModel.m in Sources */,
 				93C1021F1BAAFEB3004FDBAC /* MASConstraintMaker.m in Sources */,
+				93691D8F1BB2E2E100A31228 /* LocalityTableViewCell.m in Sources */,
 				93C101931BAA9B3D004FDBAC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				93C101DC1BAABE61004FDBAC /* UIView+WebCacheOperation.m in Sources */,
 				93C1FF791BAA68D0004FDBAC /* RDVTabBarController.m in Sources */,

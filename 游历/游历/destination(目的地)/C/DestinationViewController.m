@@ -8,7 +8,7 @@
 
 #import "DestinationViewController.h"
 
-@interface DestinationViewController ()
+@interface DestinationViewController ()<UISearchBarDelegate>
 
 @end
 
@@ -17,22 +17,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"目的地";
+    
+    
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.delegate = self;
+    searchBar.backgroundColor = [UIColor redColor];
+       searchBar.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+    NSLog(@"%@",searchBar.text);
+   
+    return searchBar;
+    
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma mark - 键盘点击事件
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"%@",searchBar.text);
 }
-*/
 
 @end

@@ -25,6 +25,10 @@
 
 //获取国国家锦囊列表
 + (NSURLSessionDataTask *)getCountriesDetailData:(void (^) (id obj,id obj1, NSError *err))block withId:(NSString *)myId;
+
+//获取游记列表
++ (NSURLSessionDataTask *)getTravelPageData:(void (^) (id obj1,id obj2,id obj3, NSError *err))block withPage:(int)page;
+
 @end
 
 

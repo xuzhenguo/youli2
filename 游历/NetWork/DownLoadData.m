@@ -15,6 +15,7 @@
 #import  "BagModel.h"
 #import "downModel.h"
 #import "collectModel.h"
+#import "LocalityModel.h"
 @implementation DownLoadData
 
 
@@ -205,6 +206,42 @@
     
     
 }
+
+
+//获取游记列表
++ (NSURLSessionDataTask *)getTravelPageData:(void (^) (id obj1,id obj2,id obj3, NSError *err))block withPage:(int)page
+{
+    NSString *path = @"http://open.qyer.com/qyer/recommands/trip?client_id=qyer_android&client_secret=9fcaae8aefc4f9ac4915&v=1&type=index&page=%d&count=20";
+    NSString *pathUrl = [NSString stringWithFormat:path,page];
+    
+    return [[AFAppDotNetAPIClient sharedClient]POST:pathUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+     
+        NSDictionary *jason = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSArray *arr = [jason objectForKey:@"data"];
+        NSMutableArray *dataArr = [[NSMutableArray alloc]init];
+        [arr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            LocalityModel *model = [LocalityModel appWithDic:obj];
+            
+            [dataArr addObject:model];
+            
+        }];
+        
+        if (block) {
+            block(dataArr,nil,nil,nil);
+        }
+        
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (block) {
+            
+            block(nil,nil,nil,error);
+        }
+        
+    }];
+    
+}
+
 @end
 
 
