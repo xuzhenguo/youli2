@@ -25,3 +25,14 @@
 #import "Masonry.h"
 
 #import "help.h"
+
+
+
+// 深灰色 透明度 0.20
+
+#define WColorDarkGray [UIColor colorWithRed:0.000f green:0.000f blue:0.000f alpha:0.20f]
+
+
+#define arrTitle @[@"搜索周边",@"餐馆",@"KTV",@"咖啡馆",@"景点",@"邮局",@"购物",@"银行",@"旅馆",@"警察局",@"地铁站",@"停车场",@"展开地图"]
+
+// NSArray *arrTitle = @[@"搜索周边",@"餐馆",@"KTV",@"咖啡馆",@"景点",@"邮局",@"购物",@"银行",@"旅馆",@"警察局",@"地铁站",@"停车场",@"展开地图"];
