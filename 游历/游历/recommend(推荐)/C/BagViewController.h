@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 #import "BagCell.h"
-@interface BagViewController : MainViewController
+@interface BagViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate>
 
 @property(nonatomic,copy)NSString *myId;
+@property(nonatomic,copy)UITableView *table;
 
 @end

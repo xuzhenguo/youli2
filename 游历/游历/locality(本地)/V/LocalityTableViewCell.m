@@ -37,6 +37,9 @@
     NSString *smallPath = app.avatar;
     NSURL *url2 = [NSURL URLWithString:smallPath];
     [self.smallImageView sd_setImageWithURL:url2];
+    self.smallImageView.layer.cornerRadius = 60.0/2;
+    self.smallImageView.layer.masksToBounds = YES;
+    
     
     self.titleLabel.text = app.title;
     self.nameLabel.text = app.username;

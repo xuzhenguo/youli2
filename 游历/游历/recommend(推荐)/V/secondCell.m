@@ -15,7 +15,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        NSArray *titlArr = @[@"喜欢",@"热门",@"推荐",@"足迹"];
+        NSArray *titlArr = @[@"猜你喜欢",@"热门国家",@"推荐美食",@"我的足迹"];
         NSArray *imageArr = @[@"cou_锦囊@2x",@"cou_plan@2x",@"cou_城市@2x.png",@"playIcon@2x"];
         UIView *superView = self.contentView;
         CGFloat  interval = (SCREEN_WIDHT -(4 * WIDE))/5;
@@ -39,7 +39,7 @@
             UILabel *lable = [[UILabel alloc]init];
             lable.frame = CGRectMake((interval + WIDE) *i+ interval, 75, WIDE, 20);
             lable.text = titlArr[i];
-            lable.font = [UIFont boldSystemFontOfSize:16];
+            lable.font = [UIFont boldSystemFontOfSize:12];
             lable.textColor = [UIColor lightGrayColor];
             lable.textAlignment = NSTextAlignmentCenter;
             [superView addSubview:lable];

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainWebView : UIViewController
+@interface MainWebView : UIViewController<UIWebViewDelegate,MBProgressHUDDelegate>
+@property(nonatomic,strong)MBProgressHUD *HUD;
 @property(nonatomic,copy)NSString *path;
+
 @end

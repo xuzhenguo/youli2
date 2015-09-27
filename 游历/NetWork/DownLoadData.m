@@ -16,6 +16,8 @@
 #import "downModel.h"
 #import "collectModel.h"
 #import "LocalityModel.h"
+#import "FootModel.h"
+#import "FoodDetailsModel.h"
 @implementation DownLoadData
 
 
@@ -156,7 +158,7 @@
 
     return nil;
 }
-
+#warning 待处理
 //获取国国家锦囊列表
 + (NSURLSessionDataTask *)getCountriesDetailData:(void (^) (id obj,id obj1, NSError *err))block withId:(NSString *)myId
 {
@@ -216,6 +218,7 @@
     
     return [[AFAppDotNetAPIClient sharedClient]POST:pathUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
      
+        
         NSDictionary *jason = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSArray *arr = [jason objectForKey:@"data"];
         NSMutableArray *dataArr = [[NSMutableArray alloc]init];
@@ -236,6 +239,92 @@
         if (block) {
             
             block(nil,nil,nil,error);
+        }
+        
+    }];
+    
+}
+
+
+//美食列表
++ (NSURLSessionDataTask *)getFoodPageData:(void (^) (id obj1, NSError *err))block type:(NSString *)type myid:(NSString *)num count:(NSString *)count withPage:(int)page
+{
+    NSString *path = @"http://open.qyer.com/qyer/footprint/mguide_list?client_id=qyer_android&client_secret=9fcaae8aefc4f9ac4915&v=1&track_deviceid=864312020164434&track_app_version=5.2.1&track_app_channel=360m&track_device_info=HM2013022&track_os=Android4.2.1&track_user_id=&app_installtime=1411107832476&lat=40.035727&lon=116.363162&type=%@&id=%@&count=%d&page=%d";
+
+    
+    
+    
+    NSString *url = [NSString stringWithFormat:path,type,num,[count integerValue],page];
+    
+    
+    return [[AFAppDotNetAPIClient sharedClient]POST:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:responseObject forKey:@"FoodPage"];
+        [user synchronize];
+
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        
+        NSArray *arr = [dic objectForKey:@"data"];
+        
+        NSMutableArray *footArr = [[NSMutableArray alloc]init];
+        [arr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            FootModel *model = [FootModel  appWithDic:obj];
+            
+            [footArr addObject:model];
+        }];
+        
+        
+        if (block) {
+            block(footArr,nil);
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        if (block) {
+            block(nil,error);
+        }
+        
+    }];
+    
+    
+    
+    
+}
+
+//食物详情
+#define kSubjectDetailUrl @"http://open.qyer.com/qyer/footprint/mguide_detail?client_id=qyer_android&client_secret=9fcaae8aefc4f9ac4915&v=1&app_installtime=1411107832476&id=%@&page=1&count=10&source=TravelTopicDetailActivity"
++ (NSURLSessionDataTask *)getFoodDetailsPageData:(void (^) (id obj, NSError *err))block withPage:(NSString *)page
+{
+    
+    NSString *path = [NSString stringWithFormat:kSubjectDetailUrl,page];
+    
+    NSMutableArray *dataAll = [[NSMutableArray alloc]init];
+
+    return [[AFAppDotNetAPIClient sharedClient]POST:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary * jsonDic2 = [jsonDic objectForKey:@"data"];
+        NSArray *dataArr = [jsonDic2 objectForKey:@"pois"];
+        
+        [dataArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            FoodDetailsModel *model = [FoodDetailsModel appWithDic:obj];
+            [dataAll addObject:model];
+            
+        }];
+        
+        if (block) {
+            block(dataAll,nil);
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (block) {
+            block(nil,error);
         }
         
     }];

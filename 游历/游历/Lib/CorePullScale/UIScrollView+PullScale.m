@@ -31,17 +31,38 @@ static char CorePullScaleImageViewKey;
  *  @param imgName              图片名
  *  @param originalHeight       imageView的初始高度（关系到contentInset及contentOffset）
  */
--(void)addPullScaleFuncInVC:(UIViewController *)vc imgName:(NSString *)imgName originalHeight:(CGFloat)originalHeight hasNavBar:(BOOL)hasNavBar{
+-(void)addPullScaleFuncInVC:(UIViewController *)vc imgName:(NSString *)imgName imgUrl:(NSString *)url originalHeight:(CGFloat)originalHeight headURl:(NSString *)headURl name:(NSString *)nameStr hasNavBar:(BOOL)hasNavBar{
+    
+#pragma mark - 背景图片
     
     CorePullScaleImageView *imageV=[[CorePullScaleImageView alloc] init];
+    NSURL *urlBig = [NSURL URLWithString:url];
     
-
+    [imageV sd_setImageWithURL:urlBig];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 40, 40);
-    btn.backgroundColor = [UIColor redColor];
-    [self addSubview:btn];
-                     
+#pragma mark - 头像
+    
+    NSURL *urlSmall = [NSURL URLWithString:headURl];
+    UIImageView *view = [[UIImageView alloc]init];
+    [view sd_setImageWithURL:urlSmall];
+    view.backgroundColor = [UIColor blueColor];
+    view.frame = CGRectMake((SCREEN_WIDHT - 60)/2,20,60,60);
+    view.layer.cornerRadius = 60/2;
+    view.layer.masksToBounds = YES;
+    [imageV addSubview:view];
+    
+#pragma mark - name
+    
+    UILabel *label = [[UILabel alloc]init];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.frame = CGRectMake((SCREEN_WIDHT - 200)/2, 90, 200,30);
+    if (nameStr != nil) {
+        label.text = nameStr;
+        
+    }
+      [imageV addSubview:label];
+    
     
     //记录
     self.imageV=imageV;
@@ -49,12 +70,12 @@ static char CorePullScaleImageViewKey;
     //数据传递
     imageV.hasNavBar=hasNavBar;
     imageV.originalHeight=originalHeight;
-    imageV.imgName=imgName;
+    
+//    imageV.imgName=imgName;
     imageV.vc=vc;
 
     CGFloat height=originalHeight;
 
-    
     
     /**
      *  contentInset

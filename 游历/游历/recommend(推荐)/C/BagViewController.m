@@ -13,15 +13,42 @@
 @implementation BagViewController
 {
     NSMutableArray *dataArr;
+    
 }
 
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self getData];
+    
+    
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 64,SCREEN_WIDHT, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
+    _table.showsHorizontalScrollIndicator = NO;
+    _table.showsVerticalScrollIndicator = NO;
+    _table.delegate = self;
+    _table.dataSource = self;
+    _table.tableFooterView = [[UIView alloc]init];
+    [self.view addSubview:_table];
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 44, 44);
+    [btn setBackgroundImage:[UIImage imageNamed:@"btn_webview_next.png"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(pusPag) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = left;
+    
+}
+-(void)pusPag
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 -(void)getData
 {
@@ -47,7 +74,7 @@
         }
 
         dataArr = dataJsonArr;
-        [self.table reloadData];
+        [_table reloadData];
     }
     
     
@@ -63,7 +90,7 @@
             }
             
             
-            [self.table reloadData];
+            [_table reloadData];
             
         }else{
             

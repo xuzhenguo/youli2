@@ -18,17 +18,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    
+    //    设置导航背景颜色
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:63.0/255 green:159.0/255 blue:95.0/255 alpha:1.0]];
     
     
     
+    //    设置状态栏字体颜色
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+   
     
     
     
     //    设置状态栏颜色
     NSDictionary* textAttributes = @{
-                                     NSFontAttributeName : [UIFont boldSystemFontOfSize:20],
-                                     NSForegroundColorAttributeName :[UIColor colorWithRed:214.0/255 green:102.0/255 blue:64.0/255 alpha:1.0],
+                                     NSFontAttributeName : [UIFont boldSystemFontOfSize:18],
+                                     NSForegroundColorAttributeName :[UIColor whiteColor],
                                      };
     
     [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];

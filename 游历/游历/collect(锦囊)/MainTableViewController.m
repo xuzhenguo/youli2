@@ -6,12 +6,13 @@
 #import "collectModel.h"
 #import "XLPlainFlowLayout.h"
 #import "BagViewController.h"
-@interface MainTableViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface MainTableViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MBProgressHUDDelegate>
 {
     UICollectionView *collectionView1;
     UICollectionViewFlowLayout *layout;
     NSMutableArray *dataBigArr;
     NSMutableArray *dataArr;
+    MBProgressHUD *HUD;
     
 }
 
@@ -49,9 +50,17 @@
     
      [collectionView1 registerClass:[RecipeCollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"456"];
     [self downData];
-   
-//    NSArray * arr = @[@"1",@"2",@"11",@"4",@"5",@"8",@"10",@"12"];
-    NSLog(@"%ld",self.index);
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
+    
+    [self.view addSubview:HUD];
+    
+    [HUD show:YES];
+    
+    
+    
    }
 
 -(void)downData
@@ -64,6 +73,7 @@
 
     if (data != nil) {
         
+        [HUD hide:YES];
         NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
         NSArray *jsonData2 = [jsonData objectForKey:@"data"];
@@ -87,6 +97,7 @@
             }];
             
             [dataBig addObject:dataSmallArr];
+            [HUD hide:YES];
         }];
         
       dataArr = dataBig[_index];
@@ -107,6 +118,8 @@
     
     [DownLoadData getCountriesDetailData:^(id obj, id obj1, NSError *err) {
         if (obj) {
+            
+            [HUD hide:YES];
             
             dataBigArr = obj;
             dataArr = dataBigArr[_index];
@@ -188,7 +201,10 @@
 #pragma mark -- 返回每个collectionCell的高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(100, 130);
+    CGFloat with = (SCREEN_WIDHT - 20*4)/3.0;
+    CGFloat hight = with *1.3;
+    
+    return CGSizeMake(with, hight);
 }
 
 
@@ -197,6 +213,15 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(20, 20, 20, 20);
+}
+
+#pragma mark - 触摸事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (dataArr != nil) {
+        [HUD hide:YES];
+    }
+    
 }
 
 /*

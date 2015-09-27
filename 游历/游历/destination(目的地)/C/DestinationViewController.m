@@ -35,6 +35,11 @@ static int rowHeight;
       self.navigationItem.title = @"目的地";
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(idStrNotification:) name:@"idStr" object:nil];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = left;
 
 }
 

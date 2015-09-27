@@ -29,6 +29,15 @@
 //获取游记列表
 + (NSURLSessionDataTask *)getTravelPageData:(void (^) (id obj1,id obj2,id obj3, NSError *err))block withPage:(int)page;
 
+//美食列表
++ (NSURLSessionDataTask *)getFoodPageData:(void (^) (id obj1, NSError *err))block type:(NSString *)type myid:(NSString *)num count:(NSString *)count withPage:(int)page;
+
+//主题详情
+
+
++ (NSURLSessionDataTask *)getFoodDetailsPageData:(void (^) (id obj, NSError *err))block withPage:(NSString *)page;
+
+
 @end
 
 

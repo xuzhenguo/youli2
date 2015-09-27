@@ -30,6 +30,7 @@
         _failedBlock = failedBlock;
     }
     NSURL *url = [NSURL URLWithString:self.model.file];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 
     _urlConnection = [[NSURLConnection alloc]initWithRequest:request delegate:self];

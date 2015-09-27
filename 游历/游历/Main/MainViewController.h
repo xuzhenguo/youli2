@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate>
 @property (nonatomic,strong)UITableView *table;
 @property (nonatomic,strong)NSMutableArray *dataArr;
+@property(nonatomic,assign)int Hnum;
+@property(nonatomic,strong)MBProgressHUD *HUD;
 @end

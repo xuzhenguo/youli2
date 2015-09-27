@@ -70,7 +70,6 @@
         }];
         
         
-        
 #pragma mark -- 台名
         UILabel *stageLabel = [[UILabel alloc]init];
         stageLabel.textColor = [UIColor grayColor];

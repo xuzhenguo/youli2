@@ -17,14 +17,33 @@
 
 @end
 
+static int pag ;
 @implementation LocalityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"本地";
     [self gateData];
+    dataArr = [[NSMutableArray alloc]init];
     
+    [self.view addSubview:self.HUD];
+    [self.HUD show:YES];
     
+    //    =========下拉刷新==========
+    __weak typeof(self) weakSelf = self;
+    // 添加传  统的上拉刷新
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    [self.table addLegendFooterWithRefreshingBlock:^{
+        [weakSelf gateData];
+    }];
+    
+    pag = 1;
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = left;
+
     
     
 }
@@ -34,7 +53,11 @@
     [DownLoadData getTravelPageData:^(id obj1, id obj2, id obj3, NSError *err) {
         if (obj1) {
             
-            dataArr = obj1;
+            pag ++;
+            [self.table.footer endRefreshing];
+            [self.HUD hide:YES];
+            
+            [dataArr addObjectsFromArray:obj1];
             [self.table reloadData];
         }else
         {
@@ -45,7 +68,7 @@
         
         
         
-    } withPage:1];
+    } withPage:pag];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

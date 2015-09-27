@@ -17,7 +17,10 @@
 #import "TitleModel.h"
 #import "tripModel.h"
 #import "BagViewController.h"
-@interface RecommendViewController ()<SDCycleScrollViewDelegate>
+#import "FootViewController.h"
+#import "HotCountryViewController.h"
+#import "FootprintView.h"
+@interface RecommendViewController ()<SDCycleScrollViewDelegate,MBProgressHUDDelegate>
 {
 //    标题图片数据
     NSMutableArray *titleImageArr;
@@ -32,20 +35,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-      self.table = [[UITableView alloc]initWithFrame:CGRectMake(0, 64,SCREEN_WIDHT, SCREEN_HEIGHT - 64 - 49) style:UITableViewStylePlain];
+
     NSLog(@"%@",NSHomeDirectory());
     self.navigationItem.title = @"推荐";
-//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"home_head"] forBarMetrics:UIBarMetricsDefault];
     
+    self.Hnum = 49;
+
+    [self.view addSubview:self.HUD];
+    [self.HUD show:YES];
+    
+    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    // 添加传统的下拉刷新
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    [self.table addLegendHeaderWithRefreshingBlock:^{
+        [weakSelf gataData];
+    }];
+    
+    // 马上进入刷新状态
+    [self.table.legendHeader beginRefreshing];
     
     [self gataData];
+    
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = left;
+    
+
     
 }
 
 #pragma mark -- 标题图片数据请求
 -(void)gataData
 {
-
+    
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSData *jsonData = [user objectForKey:@"Recommend"];
     
@@ -85,6 +113,12 @@
     
     [DownLoadData getRecommendPageData:^(id obj1, id obj2, id obj3, NSError *err) {
         if (obj1 && obj2 && obj3) {
+            
+            
+            // 拿到当前的下拉刷新控件，结束刷新状态
+            [self.table.header endRefreshing];
+             [self.HUD hide:YES];
+//            [self.table.footer endRefreshing];  //结束刷新
             
             titleImageArr = obj1;
             placeMutableAll = obj2;
@@ -137,6 +171,25 @@
                       bigView.myId = @"11";
                       bigView.hidesBottomBarWhenPushed = YES;
                       [self.navigationController pushViewController:bigView animated:YES];
+                  }
+                  
+                  if (ln == 2) {
+                      
+                      HotCountryViewController *hot = [[HotCountryViewController alloc]init];
+                      [self.navigationController pushViewController:hot animated:YES];
+                      
+                  }
+                  
+                  
+                  if (ln == 3) {
+                      FootViewController *foot = [[FootViewController alloc]init];
+                      [self.navigationController pushViewController:foot animated:YES];
+  
+                  }
+                  
+                  if (ln == 4) {
+                      FootprintView *footprin = [[FootprintView alloc]init];
+                      [self.navigationController pushViewController:footprin animated:YES];
                   }
                 
               }];
@@ -310,6 +363,15 @@
         
         scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
         
+    }
+    
+}
+#pragma mark - 触摸事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+   
+    if (titleImageArr!= nil && placeMutableAll != nil && tripMutableAll != nil) {
+        [self.HUD hide:YES];
     }
     
 }

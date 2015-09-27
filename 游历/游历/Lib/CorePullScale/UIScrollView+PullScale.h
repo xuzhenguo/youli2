@@ -23,7 +23,7 @@
  *  @param imgName              图片名
  *  @param originalHeight       imageView的初始高度（关系到contentInset及contentOffset）
  */
--(void)addPullScaleFuncInVC:(UIViewController *)vc imgName:(NSString *)imgName originalHeight:(CGFloat)originalHeight hasNavBar:(BOOL)hasNavBar;
+-(void)addPullScaleFuncInVC:(UIViewController *)vc imgName:(NSString *)imgName imgUrl:(NSString *)url originalHeight:(CGFloat)originalHeight headURl:(NSString *)headURl name:(NSString *)nameStr hasNavBar:(BOOL)hasNavBar;
 
 
 
