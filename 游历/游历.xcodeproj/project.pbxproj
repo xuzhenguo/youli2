@@ -26,6 +26,8 @@
 		93691D901BB2E2E100A31228 /* LocalityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93691D8E1BB2E2E100A31228 /* LocalityTableViewCell.xib */; };
 		937AF3EC1BB7AC9A0069254D /* FootprintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AF3EA1BB7AC9A0069254D /* FootprintView.m */; };
 		937AF3ED1BB7AC9A0069254D /* FootprintView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937AF3EB1BB7AC9A0069254D /* FootprintView.xib */; };
+		937AF4431BB7E5850069254D /* CollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AF4411BB7E5850069254D /* CollectCell.m */; };
+		937AF4441BB7E5850069254D /* CollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937AF4421BB7E5850069254D /* CollectCell.xib */; };
 		938C97391BAF204B00C0AFFB /* UILabel+Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 938C97381BAF204B00C0AFFB /* UILabel+Help.m */; };
 		938E1F231BB5227900F92B8A /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 938E1F211BB5227900F92B8A /* LocationViewController.m */; };
 		938E1F241BB5227900F92B8A /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 938E1F221BB5227900F92B8A /* LocationViewController.xib */; };
@@ -439,6 +441,9 @@
 		937AF3E91BB7AC9A0069254D /* FootprintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootprintView.h; sourceTree = "<group>"; };
 		937AF3EA1BB7AC9A0069254D /* FootprintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootprintView.m; sourceTree = "<group>"; };
 		937AF3EB1BB7AC9A0069254D /* FootprintView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootprintView.xib; sourceTree = "<group>"; };
+		937AF4401BB7E5850069254D /* CollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectCell.h; sourceTree = "<group>"; };
+		937AF4411BB7E5850069254D /* CollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectCell.m; sourceTree = "<group>"; };
+		937AF4421BB7E5850069254D /* CollectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectCell.xib; sourceTree = "<group>"; };
 		938C97371BAF204B00C0AFFB /* UILabel+Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Help.h"; sourceTree = "<group>"; };
 		938C97381BAF204B00C0AFFB /* UILabel+Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Help.m"; sourceTree = "<group>"; };
 		938E1F201BB5227900F92B8A /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
@@ -1890,6 +1895,9 @@
 				939E445A1BB68FAB00DAA3F6 /* HotCountryCell.h */,
 				939E445B1BB68FAB00DAA3F6 /* HotCountryCell.m */,
 				939E445C1BB68FAB00DAA3F6 /* HotCountryCell.xib */,
+				937AF4401BB7E5850069254D /* CollectCell.h */,
+				937AF4411BB7E5850069254D /* CollectCell.m */,
+				937AF4421BB7E5850069254D /* CollectCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -2212,6 +2220,7 @@
 				93B84BA01BB4306F00382F8D /* nearby_Search_Type_Tieba@3x.png in Resources */,
 				93B84B411BB4306F00382F8D /* nearby_Search_Type_Bank@3x.png in Resources */,
 				93B84B431BB4306F00382F8D /* nearby_Search_Type_Bank@1x.png in Resources */,
+				937AF4441BB7E5850069254D /* CollectCell.xib in Resources */,
 				93B84B961BB4306F00382F8D /* nearby_Search_Type_Stop@3x.png in Resources */,
 				93B84AA91BB42E0000382F8D /* nearby_Search_Type_KTV@2x.png in Resources */,
 				93B84B5A1BB4306F00382F8D /* nearby_Search_Type_Expand@3x.png in Resources */,
@@ -2389,6 +2398,7 @@
 				93C101D81BAABE61004FDBAC /* UIImage+MultiFormat.m in Sources */,
 				93C101D01BAABE61004FDBAC /* SDWebImageCompat.m in Sources */,
 				938E1F421BB5351000F92B8A /* MJRefreshGifFooter.m in Sources */,
+				937AF4431BB7E5850069254D /* CollectCell.m in Sources */,
 				938E1F5C1BB5BA9F00F92B8A /* FootDetailsViewController.m in Sources */,
 				93C101F41BAAC4BD004FDBAC /* TAAnimatedDotView.m in Sources */,
 				93C102231BAAFEB3004FDBAC /* NSArray+MASAdditions.m in Sources */,

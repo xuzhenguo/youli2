@@ -61,9 +61,7 @@
     if (data != nil) {
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSArray *jsonArr = [json objectForKey:@"data"];
-        
-        
-        
+    
         NSMutableArray *dataJsonArr = [[NSMutableArray alloc]init];
         
         if ([jsonArr isKindOfClass:[NSArray class]]) {

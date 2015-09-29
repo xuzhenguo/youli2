@@ -138,7 +138,7 @@
             return 1;
             break;
         case 1:
-            return 1;
+            return 0;
             break;
         case 2:
             return 1;
@@ -209,6 +209,8 @@
                 [cell setBlck:^(int n) {
                     PlaceMadel *Place = placeMutableAll[n-5];
                     MainWebView *web = [[MainWebView alloc]init];
+                    web.imageUrl = Place.photo;
+                    web.titleStr = Place.title;
                     web.path = Place.url;
                     [self.navigationController pushViewController:web animated:YES];
                     
@@ -325,6 +327,9 @@
                 tripModel *trip = tripMutableAll[indexPath.row];
                 MainWebView *web = [[MainWebView alloc]init];
                 web.path = trip.view_url;
+                web.titleStr = trip.title;
+                web.imageUrl = trip.avatar;
+                
                 [self.navigationController pushViewController:web animated:YES];
             }
             
@@ -341,6 +346,7 @@
     TitleModel *model = titleImageArr[index];
     MainWebView *web = [[MainWebView alloc]init];
     web.path = model.url;
+    web.imageUrl = model.photo;
     [self.navigationController pushViewController:web animated:YES];
 
 }

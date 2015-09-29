@@ -101,6 +101,8 @@ static int pag ;
 {
     LocalityModel *model = dataArr[indexPath.row];
     MainWebView *web = [[MainWebView alloc]init];
+    web.titleStr = model.title;
+    web.imageUrl = model.photo;
     web.path = model.view_author_url;
     [self.navigationController pushViewController:web animated:YES];
     

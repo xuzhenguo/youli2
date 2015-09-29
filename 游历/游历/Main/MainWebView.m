@@ -10,13 +10,14 @@
 #import "RDVTabBarController.h"
 @implementation MainWebView
 
-
+static NSString *urlKey;
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    NSURL *url = [NSURL URLWithString:self.path];
+    url = [NSURL URLWithString:self.path];
     
     UIWebView *webView = [[UIWebView alloc]init];
     webView.delegate = self;
@@ -36,16 +37,66 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 44, 44);
     [btn setBackgroundImage:[UIImage imageNamed:@"btn_webview_next.png"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(pusPag) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(pusPag:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.leftBarButtonItem = left;
     
+    
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn2.frame = CGRectMake(0, 0, 44, 44);
+    [btn2 setTitle:@"收藏" forState:UIControlStateNormal];
+    [btn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithCustomView:btn2];
+    [btn2 addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
+
+    self.navigationItem.rightBarButtonItem = right;
+
 }
 
--(void)pusPag
+-(void)pusPag:(id)btn
+{
+ 
+
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)collect:(UIButton *)btn
 {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    
+[btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+   
+    NSUserDefaults *urer = [NSUserDefaults standardUserDefaults];
+    
+    dataArr =  [urer objectForKey:@"urlAll"];
+    
+    if (dataArr ==  nil) {
+        dataArr = [[NSMutableArray alloc]init];
+    }
+    
+    if (urlKey != self.path) {
+    
+        NSMutableArray *dataArr1 = [NSMutableArray arrayWithArray:dataArr];
+    
+        NSMutableArray *smallArr = [[NSMutableArray alloc]init];
+        [smallArr addObject:self.path];
+        if (self.titleStr == nil) {
+            [smallArr addObject:@"暂时无描述"];
+        }else{
+            [smallArr addObject:self.titleStr];
+        }
+        
+        [smallArr addObject:self.imageUrl];
+        
+        [dataArr1 addObject:smallArr];
+        [urer setObject:dataArr1 forKey:@"urlAll"];
+        [urer synchronize];
+    
+    }
+    
+    urlKey = self.path;
+    
+    
 }
 
 #pragma mark -- 隐藏标签栏

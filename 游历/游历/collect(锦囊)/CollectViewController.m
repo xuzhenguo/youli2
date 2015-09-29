@@ -25,7 +25,7 @@
     [super viewDidLoad];
     //self.navigationController.navigationBarHidden = YES;
     
-    self.navigationItem.title = @"资讯";
+    self.navigationItem.title = @"锦囊";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     

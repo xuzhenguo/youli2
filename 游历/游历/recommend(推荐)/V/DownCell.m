@@ -59,6 +59,7 @@
 #pragma mark -- 进度
         
         self.planLbel = [[UILabel alloc]init];
+        self.planLbel.hidden = YES;
         self.planLbel.font = [UIFont systemFontOfSize:12];
         self.planLbel.textColor = [UIColor grayColor];
         [superView addSubview:self.planLbel];
@@ -75,6 +76,7 @@
         _progressView.progressTintColor = [UIColor cyanColor];
         _progressView.trackTintColor = [UIColor grayColor];
         _progressView.progress = 0;
+        _progressView.hidden = YES;
         
         [superView addSubview:_progressView];
         
@@ -140,6 +142,7 @@
 }
 -(void)downData
 {
+    
     self.block();
 }
 - (void)awakeFromNib {

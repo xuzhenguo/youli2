@@ -16,8 +16,6 @@
     
 }
 
-
-
 @property(nonatomic,strong)NSMutableArray * arrs;
 
 @end

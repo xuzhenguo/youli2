@@ -18,7 +18,7 @@
 #import "downModel.h"
 #import "DownLoadData.h"
 #import "DownData.h"
-
+static int isDown;
 @implementation BagDetailViewController
 {
     NSMutableArray *otherData;
@@ -28,6 +28,8 @@
     NSMutableArray *dataArr;
     NSArray *otherId;
     downModel *dwnModel;
+    
+    DownData *fd;
 }
 
 -(void)viewDidLoad
@@ -41,6 +43,8 @@
     [segment addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
     otherData = [[NSMutableArray alloc]init];
     [self getData:self.guide_id];
+    isDown = 1;
+     fd  = [[DownData alloc]init];
 }
 -(void)getData:(NSString *)myId
 {
@@ -179,32 +183,47 @@
             }
             //            按钮点击事件
             [cell setBlock:^{
-                
+                cell.progressView.hidden = NO;
+                cell.planLbel.hidden = NO;
                 //                下载
                 //                NSString *path = dataMode.fileUrl;
                 
                 //                [NSURLConnection connectionWithRequest:request delegate:self];
                 
-                DownData *fd = [[DownData alloc]init];
-                fd.model  = dwnModel;
-                [fd requestFromUrlreceiveDataBlock:^(DownData *fd) {
-                    CGFloat progress = [fd.model.downloadSize longLongValue]/1.0f/[fd.model.size longLongValue];
-                    cell.planLbel.text = [NSString stringWithFormat:@"%.2f%@",progress*100,@"%"];
-                    cell.progressView.progress = progress;
-                } finished:^(DownData *fd) {
-                    
-                    NSLog(@"文件下载完成，地址：%@",fd.localPath);
-                    
-                    //解压zip
                 
-                    
-                    
-                    
-            
-                    
-                } failed:^(DownData *fd) {
-                    
-                }];
+             
+                fd.model  = dwnModel;
+                if (isDown) {
+                    [fd requestFromUrlreceiveDataBlock:^(DownData *fd) {
+                        CGFloat progress = [fd.model.downloadSize longLongValue]/1.0f/[fd.model.size longLongValue];
+                        cell.planLbel.text = [NSString stringWithFormat:@"%.2f%@",progress*100,@"%"];
+                        cell.progressView.progress = progress;
+                        
+                        
+                     
+                    } finished:^(DownData *fd) {
+                        [fd suspendDownload];
+                        cell.progressView.hidden = YES;
+                        cell.planLbel.hidden = YES;
+                        NSLog(@"文件下载完成，地址：%@",fd.localPath);
+                        
+                        //解压zip
+                        
+                        
+                        
+                        
+                        
+                        
+                    } failed:^(DownData *fd) {
+                        
+                    }];
+                    isDown = 0;
+ 
+                }else
+                {
+                [fd suspendDownload];
+                    isDown = 1;
+                }
                 
                 
                 
